@@ -2,7 +2,6 @@
 import React from 'react'
 import styles from "./Styles.module.css"
 import { useState } from 'react';
-import image from "next/image"
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -21,7 +20,11 @@ const Header = () => {
       <div className={styles.wrapper}>
         <h1 className={styles.title}>EZ Parking</h1>
       </div>
-      { <img className={styles.profileImg} src="/img/profile.webp"/> }
+      <div className={styles.profileImg}>
+        <span className={styles.elem}></span>
+        <span className={styles.elem}></span>
+      </div>
+      
     </div>
   )
 }
