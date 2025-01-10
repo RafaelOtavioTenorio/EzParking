@@ -8,6 +8,10 @@
     margin: auto; 
 }
 
+.wrapperLogin{
+    display: flex;
+}
+
 .title{
     flex-grow: 1;
     align-self: center;
