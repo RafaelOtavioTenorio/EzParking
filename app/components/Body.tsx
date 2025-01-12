@@ -21,9 +21,11 @@ const Body = () => {
         }
       }, []);
 
+      
+
   return (
     <>
-    <Header onValueChange={handleProfileReq}  />
+    <Header userLogado={userLogado} onValueChange={handleProfileReq}  />
     { userLogado && <CurrentReg />}
     { userLogado && <SearchBar />}
     { userLogado && <Favorites />}

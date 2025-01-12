@@ -2,6 +2,7 @@
 import React from 'react'
 import styles from "./Styles.module.css"
 import { useState } from 'react';
+import { FaEye, FaEyeSlash} from 'react-icons/fa';
 
 interface LoginProps {
     onLoginSuccess: () => void;
@@ -10,6 +11,11 @@ interface LoginProps {
 const Login: React.FC<LoginProps> = ({onLoginSuccess}) => {
     const[login, setLogin] = useState('');
     const[senha, setSenha] = useState('');
+    const[mostrarSenha, setMostrarSenha] = useState(false);
+
+    const togglePasswordVisibility = () => {
+        setMostrarSenha(!mostrarSenha);
+    }
 
     const handleLogin = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
@@ -35,15 +41,28 @@ const Login: React.FC<LoginProps> = ({onLoginSuccess}) => {
     }
 
   return (
-    <form action="">
-        <h1>Login: <input type="text" className={styles.loginInput} value={login} onChange={(e) => setLogin(e.target.value)} /></h1>
-        <h1>Senha: <input type="text" className={styles.senhaInput} value={senha} onChange={(e) => setSenha(e.target.value)} /></h1>
-        <div className={styles.wrapperLogin}>
-            <input type="checkbox" name="Lembrar me" id="" />
-            <h1>Lembrar me</h1>
-            <button>Não tenho cadastro</button>
+    <form action="" className={styles.loginForm}>
+        <div className={styles.loginFormIcon} />
+        <div className={styles.loginFormIcon2}>
+            <div className={styles.loginFormIcon3} />
+        </div> 
+            
+            <h1 className={styles.loginFormTitle}>Login</h1>
+        <div className={styles.loginField}>
+            <h1>E-mail: <input type="text" className={styles.loginInput} value={login} onChange={(e) => setLogin(e.target.value)} /></h1>
         </div>
-        <button onClick={handleLogin}>Login</button>
+        <div className={styles.senhaField}>
+            <h1>Senha: <input type={mostrarSenha ? "text" : "password"} className={styles.senhaInput} value={senha} onChange={(e) => setSenha(e.target.value)} />
+                <button type='button' onClick={togglePasswordVisibility} className={styles.togglePasswordVisibilityButton}>{mostrarSenha ? <FaEyeSlash/> : <FaEye /> }</button>
+            </h1>
+        </div>
+        
+        <div className={styles.wrapperLogin}>
+            <input type="checkbox" name="Lembrar me" id="" className={styles.lembrarMarcador} />
+            <h1>Lembrar me</h1>
+            <button className={styles.semCadastroButton}>Não tenho cadastro</button>
+        </div>
+        <button onClick={handleLogin} className={styles.loginButton}>Login</button>
     </form>
   )
 }
