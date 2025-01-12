@@ -12,6 +12,13 @@
     display: flex;
 }
 
+.loginInput{
+    color: black;
+}
+.senhaInput{
+    color: black;
+}
+
 .title{
     flex-grow: 1;
     align-self: center;
@@ -269,5 +276,8 @@
 @media screen and (min-aspect-ratio: 1/1) {
     .menuImg{
         margin-top: 1.5vh;
+    }
+    .profileImg{
+        margin-top: 0.7vh;
     }
 }

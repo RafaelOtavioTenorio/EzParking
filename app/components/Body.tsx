@@ -6,13 +6,21 @@ import SearchBar from "./SearchBar";
 import Favorites from "./Favorites";
 import Vehicles from "./Vehicles";
 import Login from "./Login"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Body = () => {
-    const [userLogado, setUserLogado] = useState(true);
+    const [userLogado, setUserLogado] = useState(false);
     const handleProfileReq = (value: boolean) => {
         setUserLogado(value);
+        
       }
+
+      useEffect(() => {
+        if(sessionStorage.getItem("loginData") !== null){
+          setUserLogado(true);
+        }
+      }, []);
+
   return (
     <>
     <Header onValueChange={handleProfileReq}  />
@@ -20,7 +28,7 @@ const Body = () => {
     { userLogado && <SearchBar />}
     { userLogado && <Favorites />}
     { userLogado && <Vehicles />}
-    { !userLogado && <Login />}
+    { !userLogado && <Login onLoginSuccess={() => setUserLogado(true)} />}
     </>
 
   )
