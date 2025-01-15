@@ -1,15 +1,17 @@
 'use client'
-import React from 'react'
+import React, { use } from 'react'
 import Header from "./Header";
 import CurrentReg from "./CurrentReg";
 import SearchBar from "./SearchBar";
 import Favorites from "./Favorites";
 import Vehicles from "./Vehicles";
-import Login from "./Login"
+import Login from "./Login";
+import Cadastro from "./Cadastro";
 import { useState, useEffect } from "react";
 
 const Body = () => {
     const [userLogado, setUserLogado] = useState(false);
+    const [cadastrarUsuario, setCadastrarUsuario] = useState(false);
     const handleProfileReq = (value: boolean) => {
         setUserLogado(value);
         
@@ -30,7 +32,8 @@ const Body = () => {
     { userLogado && <SearchBar />}
     { userLogado && <Favorites />}
     { userLogado && <Vehicles />}
-    { !userLogado && <Login onLoginSuccess={() => setUserLogado(true)} />}
+    { !userLogado && !cadastrarUsuario && <Login onLoginSuccess={() => setUserLogado(true)} onCadastroRequest={() => setCadastrarUsuario(true)} />}
+    { !userLogado && cadastrarUsuario && <Cadastro />}
     </>
 
   )

@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import styles from "./Styles.module.css"
+import globalStyles from "../styles/Styles.module.css"
 import { useState , FC } from 'react';
 
 interface HeaderProps {
@@ -25,19 +25,25 @@ const Header: FC<HeaderProps> = ({ onValueChange, userLogado }) => {
 
   return (
     
-    <div className={styles.headerMain}>
-      { userLogado && <div className={`${styles.menuImg} ${isOpen ? styles.open : ''}`} onClick={toggleMenu}>
-        <span className={styles.line} />
-        <span className={styles.line} />
-        <span className={styles.line} />
+    <div className={globalStyles.headerMain}>
+      { userLogado && <div className={`${globalStyles.menuImg} ${isOpen ? globalStyles.open : ''}`} onClick={toggleMenu}>
+        <span className={globalStyles.line} />
+        <span className={globalStyles.line} />
+        <span className={globalStyles.line} />
       </div>}
-      <div className={styles.wrapper}>
-        <h1 className={styles.title}>EZ Parking</h1>
+      { !userLogado && <div className={`${globalStyles.menuImg} ${isOpen ? globalStyles.open : ''}`} onClick={toggleMenu}>
+        <span className={globalStyles.line} />
+        <span className={globalStyles.line} />
+        <span className={globalStyles.line} />
+      </div>}
+      <div className={globalStyles.wrapper}>
+        <h1 className={globalStyles.title}>EZ Parking</h1>
       </div>
-      { userLogado && <div className={styles.profileImg} onClick={handleProfileRequest}>
-        <span className={styles.elem}></span>
-        <span className={styles.elem}></span>
+      { userLogado && <div className={globalStyles.profileImg} onClick={handleProfileRequest}>
+        <span className={globalStyles.elem}></span>
+        <span className={globalStyles.elem}></span>
       </div>}
+      { !userLogado && <div className={globalStyles.profileImg} style={{ visibility: 'hidden'}} />}
       
     </div>
   )

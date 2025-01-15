@@ -1,20 +1,38 @@
 'use client'
-import React from 'react'
-import styles from "./Styles.module.css"
-import { useState } from 'react';
+import globalStyles from "../styles/Styles.module.css"
+import React, { useState, useEffect } from 'react';
 import { FaEye, FaEyeSlash} from 'react-icons/fa';
 
 interface LoginProps {
     onLoginSuccess: () => void;
+    onCadastroRequest: () => void;
 }
 
-const Login: React.FC<LoginProps> = ({onLoginSuccess}) => {
+const Login: React.FC<LoginProps> = ({onLoginSuccess, onCadastroRequest}) => {
     const[login, setLogin] = useState('');
     const[senha, setSenha] = useState('');
     const[mostrarSenha, setMostrarSenha] = useState(false);
+    const[lembrarIsChecked, setLembrarIsChecked] = useState(false);
+
+    useEffect(() => {
+        const ultimoEmail = localStorage.getItem("ultimoEmail");
+        const ultimaSenha = localStorage.getItem("ultimaSenha");
+        if(ultimoEmail != null && ultimaSenha != null){
+            setLogin(ultimoEmail);
+            setSenha(ultimaSenha);
+        }
+    }, []);
+
+    const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setLembrarIsChecked(e.target.checked);
+    }
 
     const togglePasswordVisibility = () => {
         setMostrarSenha(!mostrarSenha);
+    }
+
+    const handleCadastroRequest = () => {
+        onCadastroRequest();
     }
 
     const handleLogin = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -32,6 +50,10 @@ const Login: React.FC<LoginProps> = ({onLoginSuccess}) => {
             if(login == json.email && senha == json.senha){
                 sessionStorage.setItem("loginData", json);
                 console.log("Logado com sucesso!");
+                if(lembrarIsChecked){
+                    localStorage.setItem("ultimoEmail", login);
+                    localStorage.setItem("ultimaSenha", senha);
+                }
                 onLoginSuccess();
             } else {
                 console.log("Erro ao logar!");
@@ -41,28 +63,26 @@ const Login: React.FC<LoginProps> = ({onLoginSuccess}) => {
     }
 
   return (
-    <form action="" className={styles.loginForm}>
-        <div className={styles.loginFormIcon} />
-        <div className={styles.loginFormIcon2}>
-            <div className={styles.loginFormIcon3} />
+    <form action="" className={globalStyles.loginForm}>
+        <div className={globalStyles.loginFormIcon} />
+        <div className={globalStyles.loginFormIcon2}>
+            <div className={globalStyles.loginFormIcon3} />
         </div> 
-            
-            <h1 className={styles.loginFormTitle}>Login</h1>
-        <div className={styles.loginField}>
-            <h1>E-mail: <input type="text" className={styles.loginInput} value={login} onChange={(e) => setLogin(e.target.value)} /></h1>
+            <h1 className={globalStyles.loginFormTitle}>Login</h1>
+        <div className={globalStyles.loginField}>
+            <h1>E-mail: <input type="text" className={globalStyles.loginInput} value={login} onChange={(e) => setLogin(e.target.value)} /></h1>
         </div>
-        <div className={styles.senhaField}>
-            <h1>Senha: <input type={mostrarSenha ? "text" : "password"} className={styles.senhaInput} value={senha} onChange={(e) => setSenha(e.target.value)} />
-                <button type='button' onClick={togglePasswordVisibility} className={styles.togglePasswordVisibilityButton}>{mostrarSenha ? <FaEyeSlash/> : <FaEye /> }</button>
+        <div className={globalStyles.senhaField}>
+            <h1>Senha: <input type={mostrarSenha ? "text" : "password"} className={globalStyles.senhaInput} value={senha} onChange={(e) => setSenha(e.target.value)} />
+                <button type='button' onClick={togglePasswordVisibility} className={globalStyles.togglePasswordVisibilityButton}>{mostrarSenha ? <FaEyeSlash/> : <FaEye /> }</button>
             </h1>
         </div>
-        
-        <div className={styles.wrapperLogin}>
-            <input type="checkbox" name="Lembrar me" id="" className={styles.lembrarMarcador} />
+        <div className={globalStyles.wrapperLogin}>
+            <input type="checkbox" name="Lembrar me" id="" className={globalStyles.lembrarMarcador} onChange={(e) => handleCheckboxChange(e)} />
             <h1>Lembrar me</h1>
-            <button className={styles.semCadastroButton}>Não tenho cadastro</button>
+            <button onClick={handleCadastroRequest} className={globalStyles.semCadastroButton}>Não tenho cadastro</button>
         </div>
-        <button onClick={handleLogin} className={styles.loginButton}>Login</button>
+        <button onClick={handleLogin} className={globalStyles.loginButton}>Login</button>
     </form>
   )
 }

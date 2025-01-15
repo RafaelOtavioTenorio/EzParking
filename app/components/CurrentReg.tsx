@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import React from 'react';
-import styles from './Styles.module.css';
+import globalStyles from "../styles/Styles.module.css"
 
 const CurrentReg = () => {
 
@@ -25,7 +25,7 @@ const CurrentReg = () => {
     )
   } else {
     return (
-      <div className={styles.currentRegMain} />
+      <div className={globalStyles.currentRegMain} />
     )
   }
 };
