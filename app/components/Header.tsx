@@ -47,7 +47,8 @@ const Header: FC<HeaderProps> = ({ onValueChange, userLogado, telaAtual, setCada
         <span className={globalStyles.elem}></span>
         <span className={globalStyles.elem}></span>
       </div>}
-      { telaAtual === "cadastro" || telaAtual === "login" && <div className={globalStyles.profileImg} style={{ visibility: 'hidden'}} />}
+      { telaAtual === "cadastro" && <div className={globalStyles.profileImg} style={{ visibility: 'hidden'}} />}
+      { telaAtual === "login" && <div className={globalStyles.profileImg} style={{ visibility: 'hidden'}} />}
       
     </div>
   )

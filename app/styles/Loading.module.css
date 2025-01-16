@@ -50,7 +50,7 @@
 .loadingText{
     font-size: xx-large;
     font-weight: lighter;
-    padding-bottom: 4vh;
+    padding-bottom: 25vh;
 }
 
 @keyframes rotateIcon {

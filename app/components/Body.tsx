@@ -19,9 +19,14 @@ const Body = () => {
       }
 
       useEffect(() => {
-        setTelaAtual("");
+        setTelaAtual("loading");
         if(sessionStorage.getItem("loginData") !== null){
           setUserLogado(true);
+        }
+        if(!userLogado){
+          setTelaAtual("login");
+        } else if (userLogado){
+          setTelaAtual("home");
         }
       }, []);
 
