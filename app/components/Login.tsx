@@ -6,22 +6,24 @@ import { FaEye, FaEyeSlash} from 'react-icons/fa';
 interface LoginProps {
     onLoginSuccess: () => void;
     onCadastroRequest: () => void;
+    setTelaAtual: (value: string) => void;
 }
 
-const Login: React.FC<LoginProps> = ({onLoginSuccess, onCadastroRequest}) => {
+const Login: React.FC<LoginProps> = ({ onLoginSuccess, onCadastroRequest, setTelaAtual }) => {
     const[login, setLogin] = useState('');
     const[senha, setSenha] = useState('');
     const[mostrarSenha, setMostrarSenha] = useState(false);
     const[lembrarIsChecked, setLembrarIsChecked] = useState(false);
 
     useEffect(() => {
+        setTelaAtual("login");
         const ultimoEmail = localStorage.getItem("ultimoEmail");
         const ultimaSenha = localStorage.getItem("ultimaSenha");
         if(ultimoEmail != null && ultimaSenha != null){
             setLogin(ultimoEmail);
             setSenha(ultimaSenha);
         }
-    }, []);
+    }, [setTelaAtual]);
 
     const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setLembrarIsChecked(e.target.checked);

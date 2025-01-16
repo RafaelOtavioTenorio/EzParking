@@ -1,9 +1,13 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import React from 'react';
 import globalStyles from "../styles/Styles.module.css"
 
-const SearchBar = () => {
+interface SearchBarProps {
+  setTelaAtual: (value: string) => void;
+}
+
+const SearchBar: React.FC<SearchBarProps> = ({ setTelaAtual }) => {
     const [searchText, setSearchText] = useState<string>('');
 
     const clearInput = () => {
@@ -13,6 +17,10 @@ const SearchBar = () => {
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) =>{
         setSearchText(event.target.value);
     }
+
+    useEffect(() => {
+      setTelaAtual("home");
+    }), [setTelaAtual];
 
   return (
     

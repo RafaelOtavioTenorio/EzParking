@@ -1,10 +1,14 @@
 'use client'
 import globalStyles from "../styles/Styles.module.css"
 import cadastroStyles from "../styles/Cadastro.module.css"
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaEye, FaEyeSlash} from 'react-icons/fa';
 
-const Cadastro = () => {
+interface CadastroProps {
+  setTelaAtual: (value: string) => void;
+}
+
+const Cadastro: React.FC<CadastroProps> = ({ setTelaAtual }) => {
   const[mostrarSenha, setMostrarSenha] = useState(false);
   const[formData, setFormData] = useState({
     nome: '',
@@ -69,6 +73,11 @@ const Cadastro = () => {
   const togglePasswordVisibility = () => {
     setMostrarSenha(!mostrarSenha);
   };
+
+  useEffect(() => {
+          setTelaAtual("cadastro");
+          
+      }, [setTelaAtual]);
 
   return (
     <form onSubmit={handleSubmit} className={cadastroStyles.cadastroForm}>

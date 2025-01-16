@@ -164,6 +164,32 @@
     transform: rotate(90deg) translate(5px, 35px);
 }
 
+.backButton{
+    width: 4rem;
+    height: 4rem;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 40px;
+    padding-bottom: 1vh;
+
+}
+
+.backButton:hover{
+    transform: scale(1.1);
+}
+
+.backButton::before {
+    content: '←'; 
+}
+
 .profileImg{
     width: 4rem;
     height: 4rem;
