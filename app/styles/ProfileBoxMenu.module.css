@@ -1,0 +1,19 @@
+.wrapper{
+    position: fixed;
+    right: 0;
+    padding-top: 10vh;
+    background-color: red;
+    border-radius: 1cap;
+    width: 40%;
+    height: 10vh;
+    z-index: 1000;
+}
+
+.component{
+    width: 10px;
+    height: 10px;
+    border-left: 10px solid black;
+    border-right: 10px solid black;
+    border-bottom: 10px solid black;
+    margin: 10px auto;
+}

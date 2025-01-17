@@ -1,31 +1,35 @@
 'use client'
-import React from 'react'
+import React from 'react';
 import globalStyles from "../styles/Styles.module.css"
 import { useState , FC } from 'react';
 
 interface HeaderProps {
-  onValueChange: (value: boolean) => void;
   userLogado: boolean;
   telaAtual: string;
   setCadastrarUsuario: (value: boolean) => void;
+  profileBoxMenu: boolean;
+  setProfileBoxMenu: (value: boolean) => void;
 }
 
-const Header: FC<HeaderProps> = ({ onValueChange, userLogado, telaAtual, setCadastrarUsuario }) => {
+const Header: FC<HeaderProps> = ({ userLogado, telaAtual, setCadastrarUsuario, profileBoxMenu, setProfileBoxMenu }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleMenu = () => {
       setIsOpen(!isOpen);
+      if(profileBoxMenu == true) {
+        setProfileBoxMenu(false);
+      }
     };
 
     const handleReturnButton = () => {
       setCadastrarUsuario(false);
-    }
+    };
 
-    const handleProfileRequest = () => {
-      if(userLogado){
-        onValueChange(true);
+    const handleProfileButton = () => {
+      if(profileBoxMenu == false){
+        setProfileBoxMenu(true);
       } else {
-        onValueChange(false);
+        setProfileBoxMenu(false);
       }
     };
 
@@ -43,7 +47,7 @@ const Header: FC<HeaderProps> = ({ onValueChange, userLogado, telaAtual, setCada
       <div className={globalStyles.wrapper}>
         <h1 className={globalStyles.title}>EZ Parking</h1>
       </div>
-      { telaAtual !== "cadastro" && telaAtual !== "login" && <div className={globalStyles.profileImg} onClick={handleProfileRequest}>
+      { telaAtual !== "cadastro" && telaAtual !== "login" && <div className={globalStyles.profileImg} onClick={handleProfileButton}>
         <span className={globalStyles.elem}></span>
         <span className={globalStyles.elem}></span>
       </div>}
