@@ -6,12 +6,14 @@ import { FaEye, FaEyeSlash} from 'react-icons/fa';
 
 interface CadastroProps {
   setTelaAtual: (value: string) => void;
+  selecionarTipoUser: number;
 }
 
-const Cadastro: React.FC<CadastroProps> = ({ setTelaAtual }) => {
+const Cadastro: React.FC<CadastroProps> = ({ setTelaAtual, selecionarTipoUser }) => {
   const[mostrarSenha, setMostrarSenha] = useState(false);
   const[formData, setFormData] = useState({
     nome: '',
+    tipo: selecionarTipoUser,
     cpf: '',
     dataNascimento: '',
     email: '',
@@ -39,7 +41,7 @@ const Cadastro: React.FC<CadastroProps> = ({ setTelaAtual }) => {
 
     const apiData = {
       nome: formData.nome,
-      tipo: 1,
+      tipo: formData.tipo,
       email: formData.email,
       senha: formData.senha,
       cpf: cpfFormatado,

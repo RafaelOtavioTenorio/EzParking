@@ -9,9 +9,10 @@ interface HeaderProps {
   setCadastrarUsuario: (value: boolean) => void;
   profileBoxMenu: boolean;
   setProfileBoxMenu: (value: boolean) => void;
+  setSelecionarTipoUser: (value: number) => void;
 }
 
-const Header: FC<HeaderProps> = ({ userLogado, telaAtual, setCadastrarUsuario, profileBoxMenu, setProfileBoxMenu }) => {
+const Header: FC<HeaderProps> = ({ userLogado, telaAtual, setCadastrarUsuario, profileBoxMenu, setProfileBoxMenu, setSelecionarTipoUser }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleMenu = () => {
@@ -23,6 +24,7 @@ const Header: FC<HeaderProps> = ({ userLogado, telaAtual, setCadastrarUsuario, p
 
     const handleReturnButton = () => {
       setCadastrarUsuario(false);
+      setSelecionarTipoUser(0);
     };
 
     const handleProfileButton = () => {

@@ -77,6 +77,35 @@
     margin-top: 2vh;
     margin-bottom: 3vh;
 }
+.selecaoUsuario{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.usuarioButton{
+    align-self: center;
+    border: 2px solid white;
+    border-radius: 1cap;
+    width: 30%;
+    margin-top: 2vh;
+    margin-bottom: 3vh;
+    margin-right: 3vh;
+}
+
+.selected{
+    background-color: white;
+    color: black;
+}
+
+.empresaButton{
+    align-self: center;
+    border: 2px solid white;
+    border-radius: 1cap;
+    width: 30%;
+    margin-top: 2vh;
+    margin-bottom: 3vh;
+}
 
 /*== Viewport Desktop ==*/
 @media screen and (min-aspect-ratio: 1/1) {

@@ -8,12 +8,14 @@ import Login from "./Login";
 import Cadastro from "./Cadastro";
 import Loading from "./Loading";
 import ProfileBoxMenu from "./ProfileBoxMenu";
+import TipoUser from "./TipoUser";
 import { useState, useEffect } from "react";
 import Footer from "./Footer";
 
 const Body = () => {
     const [userLogado, setUserLogado] = useState(false);
     const [telaAtual, setTelaAtual] = useState("loading");
+    const [selecionarTipoUser, setSelecionarTipoUser] = useState(0);
     const [cadastrarUsuario, setCadastrarUsuario] = useState(false);
     const [profileBoxMenu, setProfileBoxMenu] = useState(false);
 
@@ -33,7 +35,7 @@ const Body = () => {
 
   return (
     <>
-    { telaAtual !== "loading" && <Header setCadastrarUsuario={setCadastrarUsuario} userLogado={userLogado} telaAtual={telaAtual} profileBoxMenu={profileBoxMenu} setProfileBoxMenu={setProfileBoxMenu} />}
+    { telaAtual !== "loading" && <Header setCadastrarUsuario={setCadastrarUsuario} userLogado={userLogado} telaAtual={telaAtual} profileBoxMenu={profileBoxMenu} setProfileBoxMenu={setProfileBoxMenu} setSelecionarTipoUser={setSelecionarTipoUser} />}
     { telaAtual === "loading" && <Loading />}
     { profileBoxMenu && telaAtual === "home" && <ProfileBoxMenu />}
     { userLogado && telaAtual !== "loading" && <CurrentReg />}
@@ -41,7 +43,8 @@ const Body = () => {
     { userLogado && telaAtual !== "loading" && <Favorites />}
     { userLogado && telaAtual !== "loading" && <Vehicles />}
     { !userLogado && telaAtual !== "loading" && !cadastrarUsuario && <Login setTelaAtual={setTelaAtual} onLoginSuccess={() => setUserLogado(true)} onCadastroRequest={() => setCadastrarUsuario(true)} />}
-    { !userLogado && telaAtual !== "loading" && cadastrarUsuario && <Cadastro setTelaAtual={setTelaAtual} />}
+    { !userLogado && selecionarTipoUser === 0 && telaAtual !== "loading" && cadastrarUsuario && <TipoUser setSelecionarTipoUser={setSelecionarTipoUser}/>}
+    { !userLogado && selecionarTipoUser !== 0 && telaAtual !== "loading" && cadastrarUsuario && <Cadastro setTelaAtual={setTelaAtual} selecionarTipoUser={selecionarTipoUser} />}
     { telaAtual === "home" && <Footer />}
     </>
 
