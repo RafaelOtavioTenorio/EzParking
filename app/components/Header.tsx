@@ -48,12 +48,13 @@ const Header: FC<HeaderProps> = ({ telaAtual, setCadastrarUsuario, profileBoxMen
       <div className={globalStyles.wrapper}>
         <h1 className={globalStyles.title}>EZ Parking</h1>
       </div>
-      { telaAtual !== "cadastro" && telaAtual !== "login" && <div className={globalStyles.profileImg} onClick={handleProfileButton}>
+      { telaAtual !== "cadastro" && telaAtual !== "login" && telaAtual !== "tipoUser" && <div className={globalStyles.profileImg} onClick={handleProfileButton}>
         <span className={globalStyles.elem}></span>
         <span className={globalStyles.elem}></span>
       </div>}
       { telaAtual === "cadastro" && <div className={globalStyles.profileImg} style={{ visibility: 'hidden'}} />}
       { telaAtual === "login" && <div className={globalStyles.profileImg} style={{ visibility: 'hidden'}} />}
+      { telaAtual === "tipoUser" && <div className={globalStyles.profileImg} style={{ visibility: 'hidden'}} />}
       
     </div>
   )

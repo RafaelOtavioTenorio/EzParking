@@ -7,9 +7,10 @@ interface LoginProps {
     onLoginSuccess: () => void;
     onCadastroRequest: () => void;
     setTelaAtual: (value: string) => void;
+    setTipoUser: (value:number) => void;
 }
 
-const Login: React.FC<LoginProps> = ({ onLoginSuccess, onCadastroRequest, setTelaAtual }) => {
+const Login: React.FC<LoginProps> = ({ onLoginSuccess, onCadastroRequest, setTelaAtual, setTipoUser }) => {
     const[login, setLogin] = useState('');
     const[senha, setSenha] = useState('');
     const[mostrarSenha, setMostrarSenha] = useState(false);
@@ -50,7 +51,8 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess, onCadastroRequest, setTel
                 console.log('Erro!');
             }
             if(login == json.email && senha == json.senha){
-                sessionStorage.setItem("loginData", json);
+                sessionStorage.setItem("loginData", JSON.stringify(json));
+                setTipoUser(parseInt(json.tipo, 10));
                 console.log("Logado com sucesso!");
                 if(lembrarIsChecked){
                     localStorage.setItem("ultimoEmail", login);

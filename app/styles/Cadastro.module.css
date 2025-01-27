@@ -15,7 +15,7 @@
     width: 80%;
     display: flex;
     flex-direction: column;
-    margin-top: 10%;
+    margin-top: 30%;
 }
 
 .cadastroFormTitle{
@@ -43,7 +43,7 @@
     justify-self: center;
     align-self: center;
     margin-top: 1vh;
-    width: 100%;
+    padding-right: 10px;
 }
 
 .senhaField{
@@ -51,6 +51,13 @@
     align-self: center;
     margin-top: 1vh;
     padding-left: 3vh;
+}
+
+.senhaField2{
+    justify-self: center;
+    align-self: center;
+    margin-top: 1vh;
+    padding-right: 0.8vh;
 }
 
 .nomeInput{

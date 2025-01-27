@@ -19,10 +19,19 @@ const Cadastro: React.FC<CadastroProps> = ({ setTelaAtual, selecionarTipoUser })
     email: '',
     senha: '',
   });
+  const[formData2, setFormData2] = useState({
+    cnpj: '',
+    email: '',
+    senha: '',
+  });
 
   const handleChange = (e: { target: { name: any; value: any; }; }) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+    setFormData2((prevData) => ({
       ...prevData,
       [name]: value,
     }));
@@ -109,39 +118,19 @@ const Cadastro: React.FC<CadastroProps> = ({ setTelaAtual, selecionarTipoUser })
           <button type="submit" className={cadastroStyles.cadastrarButton}>Cadastrar</button>
       </form> }
       {/* selecionarTipoUser deve ser 2 nesse check para funcionar, porém fazer as outras funcionalidades tem prioridade, sendo assim conserto essa depois */}
-      { selecionarTipoUser === 3 && <form onSubmit={handleSubmit} className={cadastroStyles.cadastroForm2}>
+      { selecionarTipoUser === 2 && <form onSubmit={handleSubmit} className={cadastroStyles.cadastroForm2}>
         <h1 className={cadastroStyles.cadastroFormTitle2}>Cadastrar empresa:</h1>
-        <div className={cadastroStyles.loginField}>
-          <h1>Nome fantasia: <input name="nome" type="text" className={cadastroStyles.fantasiaInput} value={formData.nome} onChange={handleChange} required /></h1>
-        </div>
-        <div className={cadastroStyles.loginField}>
-          <h1 className={cadastroStyles.razaoLabel}>Razão social: <input name="nome" type="text" className={cadastroStyles.razaoInput} value={formData.nome} onChange={handleChange} required /></h1>
-        </div>
         <div className={cadastroStyles.cnpjField}>
-          <h1 className={cadastroStyles.cnpjLabel}>CNPJ: <input name="nome" type="text" className={cadastroStyles.cnpjInput} value={formData.nome} onChange={handleChange} required /></h1>
+          <h1 className={cadastroStyles.cnpjLabel}>CNPJ: <input name="cnpj" type="text" className={cadastroStyles.cnpjInput} value={formData2.cnpj} onChange={handleChange} required /></h1>
         </div>
         <div className={cadastroStyles.loginField}>
-          <h1 className={cadastroStyles.ramoLabel}>Ramo de atividade: <input name="nome" type="text" className={cadastroStyles.ramoInput} value={formData.nome} onChange={handleChange} required /></h1>
-        </div>
-        <div className={cadastroStyles.loginField}>
-          <h1>Endereço: <input name="nome" type="text" className={cadastroStyles.fantasiaInput} value={formData.nome} onChange={handleChange} required /></h1>
-        </div>
-
-        <div className={cadastroStyles.loginField}>
-          <h1>Telefone: <input name="nome" type="text" className={cadastroStyles.fantasiaInput} value={formData.nome} onChange={handleChange} required /></h1>
-        </div>
-        <div className={cadastroStyles.loginField}>
-          <h1>Email: <input name="nome" type="text" className={cadastroStyles.fantasiaInput} value={formData.nome} onChange={handleChange} required /></h1>
+          <h1>Email: <input name="email" type="text" className={cadastroStyles.fantasiaInput} value={formData2.email} onChange={handleChange} required /></h1>
         </div>
         <div className={cadastroStyles.senhaField}>
-          <h1>Senha: <input name="senha" type={mostrarSenha ? "text" : "password"} className={cadastroStyles.senhaInput} value={formData.senha} onChange={handleChange} required />
+          <h1 className={cadastroStyles.senhaField2}>Senha: <input name="senha" type={mostrarSenha ? "text" : "password"} className={cadastroStyles.senhaInput} value={formData2.senha} onChange={handleChange} required />
             <button type='button' onClick={togglePasswordVisibility} className={globalStyles.togglePasswordVisibilityButton}>{mostrarSenha ? <FaEyeSlash/> : <FaEye /> }</button>
           </h1>
         </div>
-        <div className={cadastroStyles.loginField}>
-          <h1>Responsável: <input name="nome" type="text" className={cadastroStyles.fantasiaInput} value={formData.nome} onChange={handleChange} required /></h1>
-        </div>
-
         <button type="submit" className={cadastroStyles.cadastrarButton}>Cadastrar</button>
       </form>}
 
