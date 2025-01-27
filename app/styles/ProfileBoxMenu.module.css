@@ -1,20 +1,76 @@
 .wrapper{
     position: fixed;
+    display: flex; 
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 2vh;
     right: 0;
     padding-top: 1vh;
     background-color: black;
     border: 1px solid white;
     border-radius: 1cap;
-    width: 40%;
-    height: 10vh;
+    width: 50%;
     z-index: 1000;
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(100%);
 }
 
-.component{
-    width: 10px;
-    height: 10px;
-    border-top: 10px solid white;
-    border-right: 10px solid black;
+.wrapper.active{
+    transform: translateX(0);
+}
+
+.wrapper::before{
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
     border-bottom: 10px solid black;
-    margin: 10px auto;
+    top: -10px;
+    right: 28px;
+}
+
+.wrapper::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 13px solid transparent;
+    border-right: 13px solid transparent;
+    border-bottom: 11px solid white;
+    top: -11px;
+    right: 25px;
+    z-index: -1;
+}
+
+.profileButton{
+    transition: all 0.3s ease;
+    font-size: larger;
+    margin-top: 1vh;
+}
+
+.settingsButton{
+    transition: all 0.3s ease;
+    font-size: larger;
+    margin-top: 1vh;
+}
+
+.logoffButton{
+    transition: all 0.3s ease;
+    font-size: larger;
+    margin-top: 1vh;
+    margin-bottom: 2vh;
+}
+
+.profileButton:hover{
+    scale: 1.1;
+}
+
+.settingsButton:hover{
+    scale: 1.1;
+}
+
+.logoffButton:hover{
+    scale: 1.1;
 }

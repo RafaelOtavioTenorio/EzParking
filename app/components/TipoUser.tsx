@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import cadastroStyles from '../styles/Cadastro.module.css'
 
 interface TipoUserProps {
   setSelecionarTipoUser: (value: number) => void;
+  setTelaAtual: (value: string) => void;
 }
 
-const TipoUser: React.FC<TipoUserProps> = ({ setSelecionarTipoUser }) => {
+const TipoUser: React.FC<TipoUserProps> = ({ setSelecionarTipoUser, setTelaAtual }) => {
   const [selectedButton, setSelectedButton] = useState<number | null>(null);
 
   const handleButtonClick = (buttonId: number, event: React.MouseEvent<HTMLButtonElement>) => {
@@ -21,6 +22,10 @@ const TipoUser: React.FC<TipoUserProps> = ({ setSelecionarTipoUser }) => {
         alert("Selecione o tipo de cadastro!");
       }
   };
+
+  useEffect (() => {
+    setTelaAtual("tipoUser");
+  }, []);
 
   return (
     <form onSubmit={handleSubmit} className={cadastroStyles.cadastroForm}>

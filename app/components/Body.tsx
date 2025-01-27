@@ -18,6 +18,7 @@ const Body = () => {
     const [selecionarTipoUser, setSelecionarTipoUser] = useState(0);
     const [cadastrarUsuario, setCadastrarUsuario] = useState(false);
     const [profileBoxMenu, setProfileBoxMenu] = useState(false);
+    const [profileScreenActive, setProfileScreenActive] = useState(false);
 
       useEffect(() => {
         setTelaAtual("loading");
@@ -35,15 +36,18 @@ const Body = () => {
 
   return (
     <>
-    { telaAtual !== "loading" && <Header setCadastrarUsuario={setCadastrarUsuario} userLogado={userLogado} telaAtual={telaAtual} profileBoxMenu={profileBoxMenu} setProfileBoxMenu={setProfileBoxMenu} setSelecionarTipoUser={setSelecionarTipoUser} />}
+    { telaAtual !== "loading" && <Header setCadastrarUsuario={setCadastrarUsuario} telaAtual={telaAtual} profileBoxMenu={profileBoxMenu} setProfileBoxMenu={setProfileBoxMenu} setSelecionarTipoUser={setSelecionarTipoUser} />}
     { telaAtual === "loading" && <Loading />}
-    { profileBoxMenu && telaAtual === "home" && <ProfileBoxMenu />}
+    { profileBoxMenu && telaAtual === "home" && <ProfileBoxMenu isActive={profileBoxMenu} setUserLogado={setUserLogado} setProfileBoxMenu={setProfileBoxMenu} setProfileScreenActive={setProfileScreenActive}/>}
+
+    {/* Implementar tela perfil!!! */}
+    
     { userLogado && telaAtual !== "loading" && <CurrentReg />}
     { userLogado && telaAtual !== "loading" && <SearchBar setTelaAtual={setTelaAtual} />}
     { userLogado && telaAtual !== "loading" && <Favorites />}
     { userLogado && telaAtual !== "loading" && <Vehicles />}
     { !userLogado && telaAtual !== "loading" && !cadastrarUsuario && <Login setTelaAtual={setTelaAtual} onLoginSuccess={() => setUserLogado(true)} onCadastroRequest={() => setCadastrarUsuario(true)} />}
-    { !userLogado && selecionarTipoUser === 0 && telaAtual !== "loading" && cadastrarUsuario && <TipoUser setSelecionarTipoUser={setSelecionarTipoUser}/>}
+    { !userLogado && selecionarTipoUser === 0 && telaAtual !== "loading" && cadastrarUsuario && <TipoUser setSelecionarTipoUser={setSelecionarTipoUser} setTelaAtual={setTelaAtual}/>}
     { !userLogado && selecionarTipoUser !== 0 && telaAtual !== "loading" && cadastrarUsuario && <Cadastro setTelaAtual={setTelaAtual} selecionarTipoUser={selecionarTipoUser} />}
     { telaAtual === "home" && <Footer />}
     </>

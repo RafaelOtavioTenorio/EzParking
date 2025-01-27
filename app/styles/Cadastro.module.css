@@ -8,8 +8,26 @@
     margin-top: 30%;
 }
 
+.cadastroForm2{
+    border-radius: 1cap;
+    justify-self: center;
+    background-color: black;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10%;
+}
+
 .cadastroFormTitle{
     margin-top: 3vh;
+    align-self: center;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.cadastroFormTitle2{
+    margin-top: 3vh;
+    margin-bottom: 2vh;
     align-self: center;
     font-size: x-large;
     font-weight: bold;
@@ -19,6 +37,13 @@
     justify-self: center;
     align-self: center;
     margin-top: 1vh;
+}
+
+.cnpjField{
+    justify-self: center;
+    align-self: center;
+    margin-top: 1vh;
+    width: 100%;
 }
 
 .senhaField{
@@ -69,6 +94,54 @@
     align-self: center;
 }
 
+.fantasiaInput{
+    color: black;
+    border-radius: 0.2cap;
+    margin-top: 1vh;
+    align-self: center;
+    justify-self: center;
+    width: 60%;
+}
+
+.razaoLabel{
+    padding-right: 0.7rem;
+}
+
+.razaoInput{
+    color: black;
+    border-radius: 0.2cap;
+    margin-top: 1vh;
+    align-self: center;
+    justify-self: center;
+    width: 66%;
+}
+
+.cnpjLabel{
+    padding-left: 0.7rem;
+}
+
+.cnpjInput{
+    color: black;
+    border-radius: 0.2cap;
+    margin-top: 1vh;
+    align-self: center;
+    justify-self: center;
+    width: 77%;
+}
+
+.ramoLabel{
+    padding-left: 0.7rem;
+}
+
+.ramoInput{
+    color: black;
+    border-radius: 0.2cap;
+    margin-top: 1vh;
+    align-self: center;
+    justify-self: center;
+    width: 48%;
+}
+
 .cadastrarButton{
     align-self: center;
     border: 2px solid white;
@@ -115,6 +188,21 @@
         flex-direction: column;
         margin-top: 10%;
     }
+    .cadastroForm2{
+        border-radius: 1cap;
+        justify-self: center;
+        background-color: black;
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        margin-top: 10%;
+    }
+    .cnpjField{
+        justify-self: center;
+        align-self: center;
+        margin-top: 3vh;
+        width: auto;
+    }
     .cadastroFormTitle{
         margin-top: 3.5vh;
     }
@@ -126,9 +214,10 @@
         margin-top: 3vh;
     } 
     .senhaField{
-        margin-top: 2vh;
+        margin-top: 3vh;
     }
     .wrapperLogin{
         margin-top: 3vh;
     }
+    
 }

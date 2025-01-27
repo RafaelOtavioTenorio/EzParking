@@ -31,11 +31,12 @@ const Cadastro: React.FC<CadastroProps> = ({ setTelaAtual, selecionarTipoUser })
   const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
 
-    const cpfFormatado = formData.cpf.replace(/\D/g, '');
+    if(selecionarTipoUser == 1){
+      const cpfFormatado = formData.cpf.replace(/\D/g, '');
     if(cpfFormatado.length !== 11) {
       alert('O CPF deve conter 11 números.');
       return;
-    }
+    };
 
     const dataNascimentoFormatada = new Date(formData.dataNascimento).toISOString().split('T')[0];
 
@@ -70,6 +71,9 @@ const Cadastro: React.FC<CadastroProps> = ({ setTelaAtual, selecionarTipoUser })
       console.error('Erro', error);
       alert('Ocorreu um erro ao cadastrar.');
     }
+    } else if (selecionarTipoUser == 2) {
+
+    }
   };
 
   const togglePasswordVisibility = () => {
@@ -82,29 +86,66 @@ const Cadastro: React.FC<CadastroProps> = ({ setTelaAtual, selecionarTipoUser })
       }, [setTelaAtual]);
 
   return (
-    <form onSubmit={handleSubmit} className={cadastroStyles.cadastroForm}>
+    <div>
+      { selecionarTipoUser === 1 && <form onSubmit={handleSubmit} className={cadastroStyles.cadastroForm}>
+        <h1 className={cadastroStyles.cadastroFormTitle}>Cadastrar:</h1>
+        <div className={cadastroStyles.loginField}>
+          <h1>Nome: <input name="nome" type="text" className={cadastroStyles.nomeInput} value={formData.nome} onChange={handleChange} required /></h1>
+        </div>
+        <div className={cadastroStyles.loginField}>
+          <h1 className={cadastroStyles.cpfText}>CPF: <input name="cpf" type="text" className={cadastroStyles.cpfInput} value={formData.cpf} onChange={handleChange} required /></h1>
+        </div>
+        <div className={cadastroStyles.loginField}>
+          <h1 className={cadastroStyles.dataNascText}>Data Nasc: <input name="dataNascimento" type="date" className={cadastroStyles.dataNascInput} value={formData.dataNascimento} onChange={handleChange} required /></h1>
+        </div>
+        <div className={cadastroStyles.loginField}>
+          <h1>E-mail: <input name="email" type="text" className={cadastroStyles.loginInput} value={formData.email} onChange={handleChange} required /></h1>
+        </div>
+        <div className={cadastroStyles.senhaField}>
+          <h1>Senha: <input name="senha" type={mostrarSenha ? "text" : "password"} className={cadastroStyles.senhaInput} value={formData.senha} onChange={handleChange} required />
+            <button type='button' onClick={togglePasswordVisibility} className={globalStyles.togglePasswordVisibilityButton}>{mostrarSenha ? <FaEyeSlash/> : <FaEye /> }</button>
+          </h1>
+        </div>
+          <button type="submit" className={cadastroStyles.cadastrarButton}>Cadastrar</button>
+      </form> }
+      {/* selecionarTipoUser deve ser 2 nesse check para funcionar, porém fazer as outras funcionalidades tem prioridade, sendo assim conserto essa depois */}
+      { selecionarTipoUser === 3 && <form onSubmit={handleSubmit} className={cadastroStyles.cadastroForm2}>
+        <h1 className={cadastroStyles.cadastroFormTitle2}>Cadastrar empresa:</h1>
+        <div className={cadastroStyles.loginField}>
+          <h1>Nome fantasia: <input name="nome" type="text" className={cadastroStyles.fantasiaInput} value={formData.nome} onChange={handleChange} required /></h1>
+        </div>
+        <div className={cadastroStyles.loginField}>
+          <h1 className={cadastroStyles.razaoLabel}>Razão social: <input name="nome" type="text" className={cadastroStyles.razaoInput} value={formData.nome} onChange={handleChange} required /></h1>
+        </div>
+        <div className={cadastroStyles.cnpjField}>
+          <h1 className={cadastroStyles.cnpjLabel}>CNPJ: <input name="nome" type="text" className={cadastroStyles.cnpjInput} value={formData.nome} onChange={handleChange} required /></h1>
+        </div>
+        <div className={cadastroStyles.loginField}>
+          <h1 className={cadastroStyles.ramoLabel}>Ramo de atividade: <input name="nome" type="text" className={cadastroStyles.ramoInput} value={formData.nome} onChange={handleChange} required /></h1>
+        </div>
+        <div className={cadastroStyles.loginField}>
+          <h1>Endereço: <input name="nome" type="text" className={cadastroStyles.fantasiaInput} value={formData.nome} onChange={handleChange} required /></h1>
+        </div>
 
-      <h1 className={cadastroStyles.cadastroFormTitle}>Cadastrar:</h1>
+        <div className={cadastroStyles.loginField}>
+          <h1>Telefone: <input name="nome" type="text" className={cadastroStyles.fantasiaInput} value={formData.nome} onChange={handleChange} required /></h1>
+        </div>
+        <div className={cadastroStyles.loginField}>
+          <h1>Email: <input name="nome" type="text" className={cadastroStyles.fantasiaInput} value={formData.nome} onChange={handleChange} required /></h1>
+        </div>
+        <div className={cadastroStyles.senhaField}>
+          <h1>Senha: <input name="senha" type={mostrarSenha ? "text" : "password"} className={cadastroStyles.senhaInput} value={formData.senha} onChange={handleChange} required />
+            <button type='button' onClick={togglePasswordVisibility} className={globalStyles.togglePasswordVisibilityButton}>{mostrarSenha ? <FaEyeSlash/> : <FaEye /> }</button>
+          </h1>
+        </div>
+        <div className={cadastroStyles.loginField}>
+          <h1>Responsável: <input name="nome" type="text" className={cadastroStyles.fantasiaInput} value={formData.nome} onChange={handleChange} required /></h1>
+        </div>
 
-      <div className={cadastroStyles.loginField}>
-        <h1>Nome: <input name="nome" type="text" className={cadastroStyles.nomeInput} value={formData.nome} onChange={handleChange} required /></h1>
-      </div>
-      <div className={cadastroStyles.loginField}>
-        <h1 className={cadastroStyles.cpfText}>CPF: <input name="cpf" type="text" className={cadastroStyles.cpfInput} value={formData.cpf} onChange={handleChange} required /></h1>
-      </div>
-      <div className={cadastroStyles.loginField}>
-        <h1 className={cadastroStyles.dataNascText}>Data Nasc: <input name="dataNascimento" type="date" className={cadastroStyles.dataNascInput} value={formData.dataNascimento} onChange={handleChange} required /></h1>
-      </div>
-      <div className={cadastroStyles.loginField}>
-        <h1>E-mail: <input name="email" type="text" className={cadastroStyles.loginInput} value={formData.email} onChange={handleChange} required /></h1>
-      </div>
-      <div className={cadastroStyles.senhaField}>
-        <h1>Senha: <input name="senha" type={mostrarSenha ? "text" : "password"} className={cadastroStyles.senhaInput} value={formData.senha} onChange={handleChange} required />
-          <button type='button' onClick={togglePasswordVisibility} className={globalStyles.togglePasswordVisibilityButton}>{mostrarSenha ? <FaEyeSlash/> : <FaEye /> }</button>
-        </h1>
-      </div>
         <button type="submit" className={cadastroStyles.cadastrarButton}>Cadastrar</button>
-    </form>
+      </form>}
+
+    </div>
   )
 }
 
