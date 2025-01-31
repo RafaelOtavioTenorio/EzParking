@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# EzParking 🚗
 
-## Getting Started
+**Um sistema para facilitar o controle de acesso a estacionamentos da PUC Minas**
 
-First, run the development server:
+## 📌 Sobre o Projeto
+EzParking é um sistema web desenvolvido para auxiliar no controle de entrada e saída de veículos nos estacionamentos da universidade. O objetivo é permitir que alunos, professores e visitantes possam cadastrar seus veículos e verificar a disponibilidade de vagas em tempo real.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🚀 Tecnologias Utilizadas
+### **Backend** (API REST):
+- C# com .NET 6
+- Entity Framework Core
+- SQL Server
+- Swagger para documentação
+- JWT para autenticação
+
+### **Frontend** (Aplicativo Web):
+- React com Vite
+- TypeScript
+- Tailwind CSS
+- Axios para consumo da API
+
+## 📷 Demonstração (Screenshots)
+Adicione aqui prints do sistema quando tiver pronto.
+
+## 📂 Como Rodar o Projeto
+### **1. Clonar o Repositório**
+```sh
+# Clone o backend
+git clone -b develop https://github.com/RafaelOtavioTenorio/EzParkingAPI.git
+
+# Clone o frontend
+git clone -b develop https://github.com/RafaelOtavioTenorio/EzParking.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### **2. Configurar o Backend (.NET 6 API)**
+```sh
+# Navegue para a pasta do backend
+cd EzParkingAPI
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# Restaurar dependências
+dotnet restore
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Rodar as migrações para criar o banco de dados
+# (Certifique-se de configurar a string de conexão no appsettings.json)
+dotnet ef database update
 
-## Learn More
+# Rodar o servidor
+dotnet run
+```
 
-To learn more about Next.js, take a look at the following resources:
+A API estará rodando em `http://localhost:5000`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### **3. Configurar o Frontend (React + Vite)**
+```sh
+# Navegue para a pasta do frontend
+cd EzParking
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Instale as dependências
+npm install
 
-## Deploy on Vercel
+# Rode o projeto
+npm run dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+O frontend estará rodando em `http://localhost:5173`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📌 Status do Projeto
+✅ Estrutura inicial do backend e frontend criada  
+✅ API de autenticação configurada  
+✅ CRUD de usuários funcional  
+🔧 Em desenvolvimento: Cadastro e controle de veículos  
+🛠 Planejado: Consulta de vagas em tempo real  
+
+## 📜 Roadmap e Contribuição
+Se quiser acompanhar o desenvolvimento ou contribuir, verifique a aba **Issues** e **Projects** aqui no GitHub.
+
+## 📌 Autor
+**Rafael Otávio Tenório**  
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Profile-blue)](https://www.linkedin.com/in/seu-perfil/)  
+
