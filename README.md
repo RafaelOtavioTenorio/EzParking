@@ -3,7 +3,7 @@
 **Sistema para controle de acesso a estacionamentos.**
 
 ## 📌 Sobre o Projeto
-EzParking é um sistema web desenvolvido para auxiliar no controle de entrada e saída de veículos nos estacionamentos da universidade. O objetivo é permitir que alunos, professores e visitantes possam cadastrar seus veículos e verificar a disponibilidade de vagas em tempo real.
+EzParking é um sistema web desenvolvido para auxiliar no controle de entrada e saída de veículos em estacionamentos. O objetivo é permitir que os usuários possam cadastrar seus veículos e verificar a disponibilidade de vagas em tempo real, além de permitir que os usuários pesquisem por estacionamentos cadastrados próximos de onde querem ir e reservar vagas.
 
 ## 🚀 Tecnologias Utilizadas
 ### **Backend** (API REST):
