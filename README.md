@@ -1,6 +1,6 @@
 # EzParking 🚗
 
-**Um sistema para facilitar o controle de acesso a estacionamentos da PUC Minas**
+**Sistema para controle de acesso a estacionamentos.**
 
 ## 📌 Sobre o Projeto
 EzParking é um sistema web desenvolvido para auxiliar no controle de entrada e saída de veículos nos estacionamentos da universidade. O objetivo é permitir que alunos, professores e visitantes possam cadastrar seus veículos e verificar a disponibilidade de vagas em tempo real.
