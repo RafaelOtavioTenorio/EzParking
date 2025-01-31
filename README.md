@@ -1,4 +1,4 @@
-# EzParking 🚗🅿️  
+# EzParking 🚗
 Sistema para controle de acesso a estacionamentos.
 
 ## 📌 Sobre o Projeto  
